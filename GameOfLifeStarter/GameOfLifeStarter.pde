@@ -8,35 +8,40 @@ void setup() {
   frameRate(10); // controls speed of regeneration
   grid = new int[height / SPACING][width / SPACING];
 
-  // populate initial grid
-  // your code here
+  for (int r = 0; r < grid.length; r++){
+    for (int c =0; c < grid[r].length; c++){
+     if ( (int)(random(1,10))== 1){
+       
+     }
+    }
+  }
+     
+    }
 
-}
+    void draw() {
+      showGrid();
+      grid = calcNextGrid();
+    }
 
-void draw() {
-  showGrid();
-  grid = calcNextGrid();
-}
+    int[][] calcNextGrid() {
+      int[][] nextGrid = new int[grid.length][grid[0].length];
 
-int[][] calcNextGrid() {
-  int[][] nextGrid = new int[grid.length][grid[0].length];
+      // your code here
 
-  // your code here
+      return nextGrid;
+    }
 
-  return nextGrid;
-}
+    int countNeighbors(int y, int x) {
+      int n = 0; // don't count yourself!
 
-int countNeighbors(int y, int x) {
-  int n = 0; // don't count yourself!
-  
-  // your code here
-  // don't check out-of-bounds cells
+      // your code here
+      // don't check out-of-bounds cells
 
-  return n;
-}
+      return n;
+    }
 
-void showGrid() {
-  // your code here
-  // use square() to represent each cell
-  // use fill(r, g, b) to control color: black for empty, red for filled (or alive)
-}
+    void showGrid() {
+      // your code here
+      // use square() to represent each cell
+      // use fill(r, g, b) to control color: black for empty, red for filled (or alive)
+    }
