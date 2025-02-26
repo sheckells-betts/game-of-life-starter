@@ -27,6 +27,17 @@ void draw() {
 int[][] calcNextGrid() {
   int[][] nextGrid = new int[grid.length][grid[0].length];
 
+  for (int r = 0; r < grid.length; r++) {
+
+    for (int c = 0; c < grid[r].length; c++) {
+      if (countNeighbors(r, c) > 3) {
+        nextGrid[r][c]=1;
+      }
+      else{
+        nextGrid[r][c]=0;
+      }
+    }
+  }
   // your code here
 
   return nextGrid;
@@ -34,6 +45,44 @@ int[][] calcNextGrid() {
 
 int countNeighbors(int y, int x) {
   int n = 0; // don't count yourself!
+  int xLim;
+  int yLim;
+  int xMin;
+  int yMin;
+  if (y == grid.length-1) {
+    yLim=y;
+  } else {
+    yLim = y+1;
+  }
+  if (x == grid[0].length-1) {
+    xLim=x;
+  } else {
+    xLim = x+1;
+  }
+  if (y == 0) {
+    yMin=y;
+  } else {
+    yMin = y-1;
+  }
+  if (x == 0) {
+    xMin=x;
+  } else {
+    xMin = x-1;
+  }
+
+
+
+  for (int r = yMin; r <= yLim; r++) {
+
+    for (int c = xMin; c<=xLim; c++) {
+
+      if (c == x && r == y) {
+      } else if (grid[r][c] == 1) {
+        n++;
+      }
+    }
+  }
+
 
   // your code here
   // don't check out-of-bounds cells
@@ -47,10 +96,11 @@ void showGrid() {
   // use fill(r, g, b) to control color: black for empty, red for filled (or alive)
 
   for (int r = 0; r < grid.length; r++) {
-    for (int c = 0; c < grid[r].length; c++){
-      if (grid[r][c] == 1){
-        fill();
-        square(c*SPACING,r*SPACING);
-      
+    for (int c = 0; c < grid[r].length; c++) {
+      if (grid[r][c] == 1) {
+        fill(#2D43AD);
+        square(c*SPACING, r*SPACING, SPACING);
+      }
     }
   }
+}
